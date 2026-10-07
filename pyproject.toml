@@ -1,0 +1,29 @@
+[project]
+name = "lane-change-counting"
+version = "0.1.0"
+description = "Counts vehicle lane changes in traffic videos"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "numpy",
+    "scipy",
+    "opencv-python-headless",
+    "imageio-ffmpeg",
+    "lap",
+    "torch",
+    "torchvision",
+    "ultralytics",
+]
+
+[tool.uv]
+# ultralytics pulls in the full opencv-python, which needs libGL; this keeps only the headless build
+override-dependencies = ["opencv-python; sys_platform == 'never'"]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu128", marker = "sys_platform == 'linux'" }]
+torchvision = [{ index = "pytorch-cu128", marker = "sys_platform == 'linux'" }]

@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+*.pt
+*.mp4
+*.jpg
+*.log
+*.bak
+out*.txt
+run_log.txt
+runs/
+*_tracks.json
